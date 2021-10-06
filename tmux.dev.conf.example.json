@@ -1,0 +1,13 @@
+{
+  "sessions": [
+    {
+      "name": "foobar",
+      "windows": [
+        {
+          "name": "foobar A",
+          "path": "foo/bar/etc"
+        }
+      ]
+    }
+  ]
+}
