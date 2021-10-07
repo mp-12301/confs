@@ -21,6 +21,10 @@ sessions.each_with_index do |session, session_index|
     system("tmux new-window -t #{ref} -n #{window['name']}")
     send_tmux_command ref, "cd #{window['path']}"
     send_tmux_command ref, "clear"
+    
+    system("tmux split-window -h")
+    send_tmux_command "#{ref}.1", "cd #{window['path']}"
+    send_tmux_command "#{ref}.1", "clear"
   end
 end
 
