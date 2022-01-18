@@ -25,6 +25,12 @@ sessions.each_with_index do |session, session_index|
     system("tmux split-window -h")
     send_tmux_command "#{ref}.1", "cd #{window['path']}"
     send_tmux_command "#{ref}.1", "clear"
+
+    if window['panels']  
+      system("tmux split-window -v")
+      send_tmux_command "#{ref}.2", "cd #{window['path']}"
+      send_tmux_command "#{ref}.2", "clear"
+    end
   end
 end
 
