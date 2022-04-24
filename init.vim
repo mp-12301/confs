@@ -34,10 +34,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'preservim/nerdtree'
-
   Plug 'vim-airline/vim-airline'
   Plug 'tpope/vim-fugitive'
 
