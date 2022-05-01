@@ -27,10 +27,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'gruvbox-community/gruvbox'
 
   Plug 'neovim/nvim-lspconfig'
-  Plug 'hrsh7th/nvim-cmp' 
-  Plug 'hrsh7th/cmp-nvim-lsp' 
-  Plug 'saadparwaiz1/cmp_luasnip' 
-  Plug 'L3MON4D3/LuaSnip' 
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -42,8 +38,13 @@ call plug#begin(stdpath('data') . '/plugged')
 
   Plug 'numToStr/Comment.nvim'
 
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+let g:deoplete#enable_at_startup = 1
 
 let g:gruvbox_contrast_dark = 'dark'
 colorscheme gruvbox
@@ -73,10 +74,6 @@ EOF
 " LSP CONFIG ----------------------------------
 lua << EOF
 local nvim_lsp = require('lspconfig')
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -122,55 +119,8 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
-
--- luasnip setup
-local luasnip = require 'luasnip'
-
--- nvim-cmp setup
-local cmp = require 'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feekeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
-
 EOF
+
 " FZF Config -----------------
 " " This is the default extra key bindings
 let g:fzf_action = {
@@ -187,3 +137,4 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
+
