@@ -28,6 +28,8 @@ call plug#begin(stdpath('data') . '/plugged')
 
   Plug 'neovim/nvim-lspconfig'
 
+  Plug 'preservim/nerdtree'
+
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   Plug 'vim-airline/vim-airline'
@@ -51,13 +53,15 @@ colorscheme gruvbox
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-a> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <C-P> :Files<CR>
 
 let NERDTreeMapOpenVSplit='v'
 let NERDTreeMapOpenSplit='s'
 let NERDTreeShowHidden=1
+
+" let g:go_def_mapping_enabled=0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -137,4 +141,6 @@ set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
+
+" let g:go_auto_type_info = 1
 
