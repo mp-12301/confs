@@ -22,6 +22,7 @@ set undodir=~/.vim/undodir
 set undofile
 set termguicolors
 set clipboard=unnamed
+set updatetime=100
 
 call plug#begin(stdpath('data') . '/plugged')
   Plug 'gruvbox-community/gruvbox'
@@ -41,12 +42,32 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'numToStr/Comment.nvim'
 
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/echodoc'
+  " Plug 'hrsh7th/nvim-cmp'
 
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  
 call plug#end()
+
+" vim-go conf ----------------------------------
+let g:go_doc_popup_window = 1
+" let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 1
+" let g:go_def_mapping_enabled=0
+" Or, you could use neovim's floating text feature.
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+" To use a custom highlight for the float window,
+" change Pmenu to your highlight group
+highlight link EchoDocFloat Pmenu
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
 
 call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 let g:deoplete#enable_at_startup = 1
+
 
 let g:gruvbox_contrast_dark = 'dark'
 colorscheme gruvbox
@@ -60,8 +81,6 @@ nnoremap <C-P> :Files<CR>
 let NERDTreeMapOpenVSplit='v'
 let NERDTreeMapOpenSplit='s'
 let NERDTreeShowHidden=1
-
-" let g:go_def_mapping_enabled=0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -132,15 +151,11 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+
+" let $FZF_DEFAULT_OPTS="--ansi"
+
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
-
-" let g:go_auto_type_info = 1
 
