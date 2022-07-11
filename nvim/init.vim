@@ -9,8 +9,10 @@ call plug#begin(stdpath('data') . 'vimplug')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
-    Plug 'NTBBloodbath/galaxyline.nvim', { 'branch': 'main' } "Maintained galaxyline
-    Plug 'kyazdani42/nvim-web-devicons'  " needed for galaxyline icons
+    Plug 'nvim-lualine/lualine.nvim'
+
+    Plug 'preservim/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
 
     Plug 'NLKNguyen/papercolor-theme'
     Plug 'nikvdp/neomux'
@@ -24,15 +26,20 @@ call plug#begin(stdpath('data') . 'vimplug')
 
     Plug 'tomtom/tcomment_vim'
 
+    Plug 'mhinz/vim-startify'
+
     Plug 'ray-x/lsp_signature.nvim'
 call plug#end()
 
 
+
 ">> for generic
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set encoding=UTF-8
 
 ">> for go
 autocmd Filetype go setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd BufWritePre *.go lua OrgImports(1000)
 
 set smartindent
 set relativenumber
@@ -93,6 +100,13 @@ let g:NERDSpaceDelims = 1
 xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 
+" >> NERDTree key bindings
+let g:webdevicons_enable_nerdtree = 1
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -109,6 +123,8 @@ nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> ga    <cmd>Lspsaga code_action<CR>
 xnoremap <silent> ga    <cmd>Lspsaga range_code_action<CR>
 nnoremap <silent> gs    <cmd>Lspsaga signature_help<CR>
+
+let g:DevIconsAppendArtifactFix=1
 
 lua <<EOF
 require("lsp")
