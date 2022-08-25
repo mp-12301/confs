@@ -100,6 +100,9 @@ let g:NERDSpaceDelims = 1
 xnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 nnoremap <Leader>ci <cmd>call NERDComment('n', 'toggle')<CR>
 
+" >> NERDTree general
+let NERDTreeShowHidden = 1
+
 " >> NERDTree key bindings
 let g:webdevicons_enable_nerdtree = 1
 
@@ -107,6 +110,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
 
 " >> Lsp key bindings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>

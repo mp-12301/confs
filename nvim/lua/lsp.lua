@@ -104,6 +104,9 @@ lspconfig.gopls.setup {
   },
 }
 
+lspconfig.eslint.setup {
+}
+
 function OrgImports(wait_ms)
   local params = vim.lsp.util.make_range_params()
   params.context = {only = {"source.organizeImports"}}
