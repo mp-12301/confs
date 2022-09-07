@@ -6,6 +6,12 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim' -- Package Manager
 
+    -- Statusline
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+ 
     -- LSP
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
@@ -14,7 +20,7 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
     -- Colorscheme section
-    use 'folke/tokyonight.nvim' -- Tokyo Night Colorscheme
+    use 'NLKNguyen/papercolor-theme' -- Papercolor theme
 
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate"
