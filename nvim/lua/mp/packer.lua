@@ -34,4 +34,10 @@ return require('packer').startup(function(use)
 
     -- Fancy Start Screen
     use 'mhinz/vim-startify'
+
+    -- File Explorer
+    use 'preservim/nerdtree'
+    use 'ryanoasis/vim-devicons'
+    use 'Xuyuanp/nerdtree-git-plugin'
+    use 'tiagofumo/vim-nerdtree-syntax-highlight'
 end)
