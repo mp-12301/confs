@@ -40,4 +40,7 @@ return require('packer').startup(function(use)
     use 'ryanoasis/vim-devicons'
     use 'Xuyuanp/nerdtree-git-plugin'
     use 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+    -- Comment
+    use 'tomtom/tcomment_vim'
 end)
