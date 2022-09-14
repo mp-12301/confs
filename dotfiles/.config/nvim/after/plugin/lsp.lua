@@ -35,6 +35,11 @@ local function config(_config)
 	}, _config or {})
 end
 
+-- eslint
+require("lspconfig").eslint.setup(config())
+nnoremap("gf", ":EslintFixAll<CR>")
+
+-- typescript
 require("lspconfig").tsserver.setup(config())
 
 -- luasnip setup
