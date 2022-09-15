@@ -12,6 +12,10 @@ nnoremap("<Leader>pf", function()
     require('telescope.builtin').find_files()
 end)
 
+nnoremap("<leader>pg", function()
+    require('telescope.builtin').git_status()
+end)
+
 nnoremap("<leader>pw", function()
     require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }
 end)
@@ -21,3 +25,4 @@ end)
 nnoremap("<leader>vh", function()
     require('telescope.builtin').help_tags()
 end)
+

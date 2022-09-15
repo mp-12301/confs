@@ -37,10 +37,14 @@ return require('packer').startup(function(use)
 
     -- File Explorer
     use 'preservim/nerdtree'
-    use 'ryanoasis/vim-devicons'
+    -- use 'ryanoasis/vim-devicons'
     use 'Xuyuanp/nerdtree-git-plugin'
-    use 'tiagofumo/vim-nerdtree-syntax-highlight'
+    -- use 'tiagofumo/vim-nerdtree-syntax-highlight'
 
     -- Comment
     use 'tomtom/tcomment_vim'
+
+    -- git
+    use 'tpope/vim-fugitive'
+
 end)
