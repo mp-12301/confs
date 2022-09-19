@@ -1,3 +1,1 @@
-# Personal Work Configurations
-- tmux
-- nvim
+personal confs
