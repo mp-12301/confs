@@ -127,7 +127,7 @@ map('n', '<leader>sl', '<CMD>SessionLoad<CR>')
 -- Keybindings for telescope
 map('n', '<leader>fr', '<CMD>Telescope oldfiles<CR>')
 map('n', '<leader>ff', '<CMD>Telescope find_files<CR>')
-map('n', '<leader>fb', '<CMD>Telescope file_browser hidden=true<CR>')
+map('n', '<leader>fb', '<CMD>Telescope file_browser hidden=true grouped=true hijack_netrw=true<CR>')
 map('n', '<leader>fw', '<CMD>Telescope live_grep<CR>')
 
 -- Keybindings for fugitive
@@ -228,9 +228,7 @@ return require('packer').startup(function()
         require("telescope").setup {
           extensions = {
             file_browser = {
-              theme = "PaperColor",
-              -- disables netrw and use telescope-file-browser in its place
-              hijack_netrw = true,
+              -- hijack_netrw = true,
               mappings = {
                 ["i"] = {
                   -- your custom insert mode mappings
