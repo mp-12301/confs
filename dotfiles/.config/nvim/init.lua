@@ -125,10 +125,11 @@ map('i', '<C-A>', '<ESC>I')
 map('n', '<leader>sl', '<CMD>SessionLoad<CR>')
 
 -- Keybindings for telescope
-map('n', '<leader>fr', '<CMD>Telescope oldfiles<CR>')
-map('n', '<leader>ff', '<CMD>Telescope find_files<CR>')
-map('n', '<leader>fb', '<CMD>Telescope file_browser hidden=true grouped=true hijack_netrw=true<CR>')
+map('n', '<leader>fr', '<CMD>Telescope oldfiles hidden=true<CR>')
+map('n', '<leader>ff', '<CMD>Telescope find_files hidden=true<CR>')
+map('n', '<leader>fb', '<CMD>Telescope file_browser path=%:p:h hidden=true grouped=true hijack_netrw=true<CR>')
 map('n', '<leader>fw', '<CMD>Telescope live_grep<CR>')
+map('n', ';', '<CMD>Telescope buffers<CR>')
 
 -- Keybindings for fugitive
 map('n', '<leader>gl', ':G difftool<CR>')
@@ -276,9 +277,8 @@ return require('packer').startup(function()
   }
 
   -- A better status line --
-  use { 'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  use { 'nvim-lualine/lualine.nvim'}
+
   require('lualine').setup({
     options = { theme = "moonfly" }
   })
