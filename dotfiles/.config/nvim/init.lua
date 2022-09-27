@@ -85,6 +85,16 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 
+-- Different editing experience (for golang for example)
+A.nvim_create_autocmd(
+  "FileType", 
+  { pattern = { "go" }, command =  [[set tabstop=4 shiftwidth=4 noexpandtab]] }
+)
+-- A.nvim_create_autocmd(
+--   "BufWritePre", 
+--   { pattern = { "*.go" }, command =  [[lua OrgImports(1000)]] }
+-- )
+
 -------------------------------------------------
 -- COLORSCHEMES
 -------------------------------------------------
@@ -125,15 +135,33 @@ map('i', '<C-A>', '<ESC>I')
 map('n', '<leader>sl', '<CMD>SessionLoad<CR>')
 
 -- Keybindings for telescope
-map('n', '<leader>fr', '<CMD>Telescope oldfiles hidden=true<CR>')
-map('n', '<leader>ff', '<CMD>Telescope find_files hidden=true<CR>')
-map('n', '<leader>fb', '<CMD>Telescope file_browser path=%:p:h hidden=true grouped=true hijack_netrw=true<CR>')
+map('n', '<leader>fr', '<CMD>Telescope oldfiles<CR>')
+map('n', '<leader>ff', '<CMD>Telescope find_files<CR>')
+map('n', '<leader>fh', '<CMD>Telescope find_files hidden=true<CR>')
+map('n', '<leader>fb', '<CMD>Telescope file_browser path=%:p:h hidden=true grouped=true<CR>')
 map('n', '<leader>fw', '<CMD>Telescope live_grep<CR>')
 map('n', ';', '<CMD>Telescope buffers<CR>')
 
 -- Keybindings for fugitive
 map('n', '<leader>gl', ':G difftool<CR>')
 map('n', '<leader>gd', ':Gdiffsplit<CR>')
+
+-------------------------------------------------
+-- NETRW
+-------------------------------------------------
+-- g.netrw_banner = 0
+-- g.netrw_liststyle = 3
+-- g.netrw_browse_split = 4
+-- g.netrw_altv = 1
+-- g.netrw_winsize = 20
+
+-------------------------------------------------
+-- NERDTREE
+-------------------------------------------------
+map('n', '<leader>n', ':NERDTreeFocus<CR>')
+map('n', '<C-n>', ':NERDTree<CR>')
+map('n', '<C-t>', ':NERDTreeToggle<CR>')
+map('n', '<C-f>', ':NERDTreeFind<CR>')
 
 -------------------------------------------------
 -- DASHBOARD
@@ -264,6 +292,9 @@ return require('packer').startup(function()
 
   -- Productivity --
   use 'tpope/vim-fugitive'
+  -- use 'tpope/vim-vinegar'
+  use 'preservim/nerdtree'
+  use 'Xuyuanp/nerdtree-git-plugin'
 
   -- Which key
   use {
