@@ -292,9 +292,8 @@ return require('packer').startup(function()
 
   -- Productivity --
   use 'tpope/vim-fugitive'
-  -- use 'tpope/vim-vinegar'
-  use 'preservim/nerdtree'
-  use 'Xuyuanp/nerdtree-git-plugin'
+  use 'tpope/vim-vinegar'
+  use 'tpope/vim-surround'
 
   -- Which key
   use {
