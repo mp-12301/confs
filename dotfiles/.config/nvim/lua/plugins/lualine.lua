@@ -1,9 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
-  config = function() 
+  config = function()
     require('lualine').setup({
       options = {
-        theme = 'papercolor_light'
+        theme = 'kanagawa'
       }
     })
   end
