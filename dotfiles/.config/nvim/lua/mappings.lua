@@ -132,3 +132,6 @@ km.set(
   ":lua require'fzf-lua'.lsp_code_actions({ winopts = {relative='cursor',row=1.01, col=0, height=0.2, width=0.4} })<cr>",
   { desc = "Code Actions" }
 )
+
+-- ## LSP mappings
+km.set("n","gd", ":lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition"} )

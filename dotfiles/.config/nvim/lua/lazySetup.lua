@@ -65,4 +65,11 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = get_setup("fzf"),
   },
+
+  -- Utilities
+    {
+    "folke/which-key.nvim",
+    config = get_setup("which-key"),
+    event = "VeryLazy",
+  },
 }
