@@ -33,7 +33,7 @@ require("lazy").setup({
   },
 })
 
--- require("setup.spelling")
 require("mappings")
+require("setup.spelling")
 require("options")
 

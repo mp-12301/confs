@@ -155,6 +155,9 @@ require("lualine").setup({
           return mode_map[s] or s
         end,
       },
+      {
+        "branch"
+      }
     },
     lualine_b = {
       {
